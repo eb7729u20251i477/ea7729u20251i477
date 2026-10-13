@@ -1,0 +1,48 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.app-toolbar {
+  flex: 0 0 auto;
+  gap: 12px;
+  border-bottom: 1px solid var(--app-border-color);
+}
+
+.logo {
+  border-radius: 50%;
+}
+
+.title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.sidenav-container {
+  flex: 1 1 auto;
+}
+
+.sidenav {
+  width: 260px;
+  border-right: 1px solid var(--app-border-color);
+}
+
+.active-link {
+  background: var(--app-hover-color);
+}
+
+@media (max-width: 599px) {
+  .title {
+    font-size: 0.85rem;
+    white-space: normal;
+    line-height: 1.1;
+  }
+}

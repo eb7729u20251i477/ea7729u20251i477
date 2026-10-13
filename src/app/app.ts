@@ -1,12 +1,26 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { Layout } from './shared/presentation/components/layout/layout';
 
+/**
+ * Root component. Bootstraps localization (English by default) and hosts the layout shell.
+ *
+ * @summary Application root component.
+ * @author Kiara Tuesta
+ */
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
-  styleUrl: './app.css',
-  templateUrl: './app.html',
+  imports: [Layout],
+  template: '<app-layout />',
 })
 export class App {
-  protected readonly title = signal('ea7729u20251i477');
+  private readonly translate = inject(TranslateService);
+
+  /**
+   * Registers the supported languages and sets English as the default one.
+   */
+  constructor() {
+    this.translate.addLangs(['en', 'es']);
+    this.translate.use('en');
+  }
 }
