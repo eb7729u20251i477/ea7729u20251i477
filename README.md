@@ -1,59 +1,41 @@
-# Ea7729u20251i477
+# GitHub CI/CD Node & Repository Management Platform
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.2.
+## Description
+Web application to monitor disk usage of regional CI/CD processing nodes and to register open source
+repositories (provided in real time by the GitHub REST API) into those nodes.
 
-## Development server
+## Features
+- Toolbar with the GitHub logo, the platform title and an **EN / ES** language switcher (English by default).
+- Sidenav (Angular Material) with the options **Home** and **New Repository Manifest**.
+- **Home** (`/home`): "My CI Nodes" grid with one *CI Node Summary* card per node: hosted repositories,
+  Total Allocated Storage, Available Capacity and Utilization Status (Normal < 75 %, Warning 75 %-99 %, Critical 100 %).
+- **New Repository Manifest** (`/repositories/manifests/new`): reactive form with cross validation
+  ("Allocated size exceeds available CI node capacity"); `registeredAt` and `id` are generated automatically.
+- **Page not found** view for unsupported routes, showing the requested path.
+- Responsive layout, dark GitHub-like theme and ARIA attributes.
 
-To start a local development server, run:
+## Stack
+Angular 22 (standalone components, Signals), TypeScript, Angular Material, Angular Router, HttpClient,
+`@ngx-translate/core` + `@ngx-translate/http-loader`, json-server 0.17.4.
 
+## Architecture
+Domain-driven, layered and component-based. Bounded contexts under `src/app`: `shared`, `cinodes`, `topics`,
+each with `domain`, `application`, `infrastructure` and `presentation` (`views` / `components`).
+Design patterns: Request/Response, Resource, Assembler, Api, Endpoint and Store.
+
+## Setup
 ```bash
-ng serve
+npm install
+npm i -g json-server@0.17.4
+cd server
+json-server --watch db.json      # fake API at http://localhost:3000
 ```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+In another terminal, from the project root:
 ```bash
-ng generate component component-name
+npm start                        # http://localhost:4200
 ```
+URLs are configured in `src/environments/`.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Authorship
+- **Author:** Nombre Apellido (student code: u202500000)
+- **Repository:** https://github.com/usuario/ea7729u202500000
