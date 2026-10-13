@@ -1,0 +1,7 @@
+.home {
+  padding: 16px 24px;
+}
+
+.error {
+  color: var(--app-danger-color);
+}

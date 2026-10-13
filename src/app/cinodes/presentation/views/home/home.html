@@ -1,0 +1,23 @@
+<section class="home" aria-labelledby="home-title">
+  <h1 id="home-title">{{ 'home.title' | translate }}</h1>
+  <p>{{ 'home.content' | translate }}</p>
+
+  <section aria-labelledby="my-ci-nodes-title">
+    <h2 id="my-ci-nodes-title">{{ 'home.my-ci-nodes' | translate }}</h2>
+
+    @if (store.loading()) {
+      <mat-spinner diameter="40" [attr.aria-label]="'home.loading' | translate"></mat-spinner>
+    }
+    @if (store.error()) {
+      <p class="error" role="alert">{{ store.error() }}</p>
+    }
+
+    <mat-grid-list cols="2" rowHeight="440px" gutterSize="16px">
+      @for (node of store.ciNodeSummaries(); track node.id) {
+        <mat-grid-tile>
+          <app-ci-node-summary [ciNode]="node"/>
+        </mat-grid-tile>
+      }
+    </mat-grid-list>
+  </section>
+</section>
