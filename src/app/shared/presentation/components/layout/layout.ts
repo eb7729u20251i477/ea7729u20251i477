@@ -17,6 +17,7 @@ import { LanguageSwitcher } from '../language-switcher/language-switcher';
  */
 @Component({
   selector: 'app-layout',
+  standalone: true,
   imports: [
     RouterOutlet,
     RouterLink,

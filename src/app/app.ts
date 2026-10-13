@@ -10,6 +10,7 @@ import { Layout } from './shared/presentation/components/layout/layout';
  */
 @Component({
   selector: 'app-root',
+  standalone: true,
   imports: [Layout],
   template: '<app-layout />',
 })

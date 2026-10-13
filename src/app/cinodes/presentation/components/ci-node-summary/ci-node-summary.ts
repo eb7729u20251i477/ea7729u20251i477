@@ -16,6 +16,7 @@ import { CiNode } from '../../../domain/model/ci-node.entity';
  */
 @Component({
   selector: 'app-ci-node-summary',
+  standalone: true,
   imports: [
     DecimalPipe,
     MatCardModule,

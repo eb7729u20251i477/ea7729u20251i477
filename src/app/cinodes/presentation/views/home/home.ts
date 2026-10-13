@@ -12,6 +12,7 @@ import { CiNodeSummary } from '../../components/ci-node-summary/ci-node-summary'
  * @author Kiara Tuesta
  */
 @Component({
+  standalone: true,
   selector: 'app-home',
   imports: [MatGridListModule, MatProgressSpinnerModule, TranslatePipe, CiNodeSummary],
   templateUrl: './home.html',

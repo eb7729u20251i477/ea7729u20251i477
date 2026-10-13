@@ -22,6 +22,7 @@ import { RepositoryManifest } from '../../../domain/model/repository-manifest.en
  */
 @Component({
   selector: 'app-repository-manifest-form',
+  standalone: true,
   imports: [
     ReactiveFormsModule,
     MatFormFieldModule,
