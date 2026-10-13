@@ -1,0 +1,54 @@
+<mat-card appearance="outlined" class="summary-card" [attr.aria-labelledby]="'ci-node-title-' + ciNode.id">
+  <mat-card-header>
+    <mat-card-title [id]="'ci-node-title-' + ciNode.id">{{ ciNode.name }}</mat-card-title>
+    <mat-card-subtitle>
+      <mat-icon inline aria-hidden="true">place</mat-icon>
+      <span class="visually-hidden">{{ 'ci-node-summary.location' | translate }}:</span>
+      {{ ciNode.location }}
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content class="summary-content">
+    @if (ciNode.repositories.length === 0) {
+      <p class="empty">{{ 'ci-node-summary.no-repositories' | translate }}</p>
+    } @else {
+      <mat-list [attr.aria-label]="'ci-node-summary.repositories' | translate">
+        @for (repository of ciNode.repositories; track repository.id) {
+          <mat-list-item lines="3">
+            <span matListItemTitle>{{ repository.repositoryName }}</span>
+            <span matListItemLine>{{ repository.fullName }}</span>
+            <span matListItemLine>{{ repository.allocatedSizeGb | number: '1.0-2' }} GB</span>
+          </mat-list-item>
+        }
+      </mat-list>
+    }
+  </mat-card-content>
+
+  <mat-card-footer class="summary-footer">
+    <dl class="indicators">
+      <div>
+        <dt>{{ 'ci-node-summary.total-allocated-storage' | translate }}</dt>
+        <dd>{{ ciNode.totalAllocatedStorageGb | number: '1.0-2' }} GB</dd>
+      </div>
+      <div>
+        <dt>{{ 'ci-node-summary.available-capacity' | translate }}</dt>
+        <dd>{{ ciNode.availableCapacityGb | number: '1.0-2' }} GB</dd>
+      </div>
+      <div>
+        <dt>{{ 'ci-node-summary.utilization-status' | translate }}</dt>
+        <dd>
+          <mat-chip [class]="'status status-' + ciNode.utilizationStatus" role="status">
+            <mat-icon matChipAvatar aria-hidden="true">{{ statusIcon }}</mat-icon>
+            {{ 'ci-node-summary.status.' + ciNode.utilizationStatus | translate }}
+            ({{ ciNode.utilizationPercentage | number: '1.0-1' }}%)
+          </mat-chip>
+        </dd>
+      </div>
+    </dl>
+    <mat-progress-bar
+      mode="determinate"
+      [value]="progressValue"
+      [class]="'status-' + ciNode.utilizationStatus"
+      [attr.aria-label]="'ci-node-summary.utilization-status' | translate"/>
+  </mat-card-footer>
+</mat-card>
