@@ -1,0 +1,25 @@
+.manifest {
+  padding: 16px 24px;
+}
+
+.subtitle {
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 560px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.error {
+  color: var(--app-danger-color);
+}

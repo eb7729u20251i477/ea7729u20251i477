@@ -1,0 +1,75 @@
+<section class="manifest" aria-labelledby="manifest-title">
+  <h1 id="manifest-title">{{ 'manifest-form.title' | translate }}</h1>
+  <h2 class="subtitle">{{ 'manifest-form.subtitle' | translate }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="create()" novalidate>
+    <mat-form-field>
+      <mat-label>{{ 'manifest-form.topic' | translate }}</mat-label>
+      <mat-select formControlName="topic" required>
+        @for (topic of topics; track topic) {
+          <mat-option [value]="topic">{{ topic }}</mat-option>
+        }
+      </mat-select>
+      @if (form.controls.topic.hasError('required')) {
+        <mat-error>{{ 'manifest-form.error.topic-required' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{ 'manifest-form.repository' | translate }}</mat-label>
+      <mat-select formControlName="repositoryId" required>
+        @for (repository of topicsStore.repositories(); track repository.id) {
+          <mat-option [value]="repository.id">
+            {{ repository.fullName }} (★ {{ repository.stargazersCount }})
+          </mat-option>
+        }
+      </mat-select>
+      @if (topicsStore.loading()) {
+        <mat-hint role="status">{{ 'manifest-form.loading-repositories' | translate }}</mat-hint>
+      }
+      @if (form.controls.repositoryId.hasError('required')) {
+        <mat-error>{{ 'manifest-form.error.repository-required' | translate }}</mat-error>
+      }
+    </mat-form-field>
+    @if (topicsStore.error()) {
+      <p class="error" role="alert">{{ topicsStore.error() }}</p>
+    }
+
+    <mat-form-field>
+      <mat-label>{{ 'manifest-form.node' | translate }}</mat-label>
+      <mat-select formControlName="nodeId" required>
+        @for (node of ciNodesStore.ciNodes(); track node.id) {
+          <mat-option [value]="node.id">{{ node.name }} - {{ node.location }}</mat-option>
+        }
+      </mat-select>
+      @if (form.controls.nodeId.hasError('required')) {
+        <mat-error>{{ 'manifest-form.error.node-required' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{ 'manifest-form.allocated-size-gb' | translate }}</mat-label>
+      <input matInput type="number" formControlName="allocatedSizeGb" min="0" required
+             aria-describedby="available-capacity-hint">
+      @if (availableCapacityGb !== null) {
+        <mat-hint id="available-capacity-hint">
+          {{ 'manifest-form.available-capacity' | translate }}: {{ availableCapacityGb }} GB
+        </mat-hint>
+      }
+    </mat-form-field>
+    @if (isSizeNotPositive()) {
+      <p class="error" role="alert">{{ 'manifest-form.error.size-greater-than-zero' | translate }}</p>
+    } @else if (isSizeExceedingCapacity()) {
+      <p class="error" role="alert">{{ 'manifest-form.error.size-exceeds-capacity' | translate }}</p>
+    }
+
+    <div class="actions">
+      <button mat-flat-button type="submit" [disabled]="!canCreate()">
+        {{ 'manifest-form.create' | translate }}
+      </button>
+      <button mat-stroked-button type="button" (click)="cancel()">
+        {{ 'manifest-form.cancel' | translate }}
+      </button>
+    </div>
+  </form>
+</section>
