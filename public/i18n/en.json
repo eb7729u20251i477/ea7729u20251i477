@@ -1,0 +1,56 @@
+{
+  "layout": {
+    "title": "GitHub CI/CD Node & Repository Management Platform",
+    "navigation": "Main navigation",
+    "toggle-menu": "Toggle navigation menu",
+    "skip-to-content": "Skip to main content",
+    "option": {
+      "home": "Home",
+      "new-repository-manifest": "New Repository Manifest"
+    }
+  },
+  "home": {
+    "title": "Home",
+    "content": "Advanced CI/CD Node and Open Source Repository Management Platform.",
+    "my-ci-nodes": "My CI Nodes",
+    "loading": "Loading CI nodes"
+  },
+  "ci-node-summary": {
+    "location": "Location",
+    "repositories": "Repositories hosted in the node",
+    "no-repositories": "No repositories registered in this node.",
+    "total-allocated-storage": "Total Allocated Storage",
+    "available-capacity": "Available Capacity",
+    "utilization-status": "Utilization Status",
+    "status": {
+      "normal": "Normal",
+      "warning": "Warning",
+      "critical": "Critical"
+    }
+  },
+  "manifest-form": {
+    "title": "New Repository Manifest",
+    "subtitle": "Register Open Source Repository to Regional CI/CD Node",
+    "topic": "Topic",
+    "repository": "Repository",
+    "node": "CI/CD Node",
+    "allocated-size-gb": "Allocated size (GB)",
+    "available-capacity": "Available capacity",
+    "loading-repositories": "Loading repositories from GitHub...",
+    "create": "Create",
+    "cancel": "Cancel",
+    "error": {
+      "topic-required": "Topic is required",
+      "repository-required": "Repository is required",
+      "node-required": "CI node is required",
+      "size-required": "Allocated size is required",
+      "size-greater-than-zero": "Allocated size must be greater than 0",
+      "size-exceeds-capacity": "Allocated size exceeds available CI node capacity"
+    }
+  },
+  "page-not-found": {
+    "title": "Page not found",
+    "content": "The path {{ path }} was not found.",
+    "go-home": "Go to Home"
+  }
+}

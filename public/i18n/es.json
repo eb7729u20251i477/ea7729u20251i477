@@ -1,0 +1,56 @@
+{
+  "layout": {
+    "title": "Plataforma de Gestión de Nodos CI/CD y Repositorios de GitHub",
+    "navigation": "Navegación principal",
+    "toggle-menu": "Mostrar u ocultar el menú de navegación",
+    "skip-to-content": "Saltar al contenido principal",
+    "option": {
+      "home": "Inicio",
+      "new-repository-manifest": "Nuevo Manifiesto de Repositorio"
+    }
+  },
+  "home": {
+    "title": "Inicio",
+    "content": "Plataforma avanzada de gestión de nodos CI/CD y repositorios de código abierto.",
+    "my-ci-nodes": "Mis Nodos CI",
+    "loading": "Cargando nodos CI"
+  },
+  "ci-node-summary": {
+    "location": "Ubicación",
+    "repositories": "Repositorios alojados en el nodo",
+    "no-repositories": "No hay repositorios registrados en este nodo.",
+    "total-allocated-storage": "Almacenamiento total asignado",
+    "available-capacity": "Capacidad disponible",
+    "utilization-status": "Estado de utilización",
+    "status": {
+      "normal": "Normal",
+      "warning": "Advertencia",
+      "critical": "Crítico"
+    }
+  },
+  "manifest-form": {
+    "title": "Nuevo Manifiesto de Repositorio",
+    "subtitle": "Registrar un repositorio de código abierto en un nodo CI/CD regional",
+    "topic": "Tema",
+    "repository": "Repositorio",
+    "node": "Nodo CI/CD",
+    "allocated-size-gb": "Tamaño asignado (GB)",
+    "available-capacity": "Capacidad disponible",
+    "loading-repositories": "Cargando repositorios desde GitHub...",
+    "create": "Crear",
+    "cancel": "Cancelar",
+    "error": {
+      "topic-required": "El tema es obligatorio",
+      "repository-required": "El repositorio es obligatorio",
+      "node-required": "El nodo CI es obligatorio",
+      "size-required": "El tamaño asignado es obligatorio",
+      "size-greater-than-zero": "El tamaño asignado debe ser mayor que 0",
+      "size-exceeds-capacity": "El tamaño asignado excede la capacidad disponible del nodo CI"
+    }
+  },
+  "page-not-found": {
+    "title": "Página no encontrada",
+    "content": "La ruta {{ path }} no fue encontrada.",
+    "go-home": "Ir a Inicio"
+  }
+}
